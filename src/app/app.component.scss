@@ -1,0 +1,139 @@
+.dropdown-toggle::after {
+  content: none !important;
+}
+
+.color-variation {
+  white-space: nowrap;
+}
+
+.top-navbar {
+  height: 3.15rem;
+}
+
+.top-navbar .dropdown-menu {
+  width: 18.75rem;
+}
+
+.navbar-brand {
+  color: transparent !important;
+  text-shadow: none !important;
+  background-color: transparent !important;
+  border: 0 !important;
+//  background: url(../assets/img/logo.png) no-repeat left top;
+  height: 3.125rem;
+  width: 16.25rem;
+  padding: 0rem;
+  background-size: cover;
+}
+
+@media screen and (max-width: 520px) {
+  .navbar-brand {
+    background: none;
+    width: 0px;
+  }
+}
+
+#sidebar {
+  width: 15rem;
+  min-width: 15rem;
+}
+
+#sidebar ul {
+  list-style-type: none;
+}
+
+#content {
+  padding-top: 3.15rem;
+  min-height: 100%;
+}
+
+footer {
+  position: absolute;
+  bottom: 0px;
+  right: 2rem;
+  left: 2rem;
+  font-size: 0.80rem;
+
+  .btn {
+    font-size: 0.80rem;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+}
+
+@import "../assets/scss/colors.scss";
+
+@mixin sidebar-variant($variant){
+
+  background: col($variant, 'sidebar-background');
+  color: col($variant, 'sidebar-text-color');
+
+  fa-icon {
+    color: col($variant, 'sidebar-icon-color');
+  }
+
+
+  a {
+    color: col($variant, 'sidebar-text-color');
+    text-transform: uppercase;
+    display: block;
+    padding: 0.94rem 1rem;
+    position: relative;
+    font-weight: 500;
+    outline: 0;
+    cursor: pointer;
+  }
+
+  a:hover > fa-icon {
+    color: col($variant, 'sidebar-hover-color');
+  }
+
+  a:hover {
+    color: col($variant, 'sidebar-hover-color');
+    background: col($variant, 'sidebar-hover-background');
+  }
+
+  ul {
+    background: col($variant, 'sidebar-submenu-background');
+    color: col($variant, 'sidebar-submenu-color');
+    list-style-type: none;
+  }
+}
+
+@mixin horizontal-variant($variant) {
+
+  background: col($variant, 'horizontal-background');
+
+  div > a {
+    color: col($variant, 'horizontal-toolbar-icon');
+    &:hover {
+      color: col($variant, 'horizontal-toolbar-icon-hover');
+    }
+  }
+
+  div.sidebar-toggle {
+    border-right: 1px solid col($variant, 'horizontal-toolbar-divider');
+  }
+
+}
+
+@each $color,$data in $colors {
+  .sidebar-#{$color} {
+    @include sidebar-variant($color);
+  }
+  .navbar-#{$color} {
+    @include horizontal-variant($color);
+  }
+
+  @if $color == 'white' {
+    .color-white {
+      background: #e0e0e0;
+    }
+  }
+  @else {
+    .color-#{$color} {
+      background: col($color, 'horizontal-background');
+    }
+  }
+}
+

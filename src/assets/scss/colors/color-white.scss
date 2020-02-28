@@ -1,0 +1,52 @@
+// Sidebar
+$ico-white: #0f1012;
+
+$sidebar-white-background: #fafafa;
+$sidebar-white-submenu-background: darken($ico-white, 5%);
+$sidebar-white-hover-color: lighten($ico-white, 20%);
+$sidebar-white-hover-background: lighten($sidebar-white-background, 2.5%);
+$sidebar-white-submenu-hover-color: darken($ico-white, 20%);
+$sidebar-white-submenu-hover-background: darken($sidebar-white-submenu-background, 3.5%);
+
+$map-white: (
+  "sidebar-background": $sidebar-white-background,
+
+  "sidebar-icon-color": lighten($ico-white, 37.5%),
+  "sidebar-text-color": lighten($ico-white, 37.5%),
+
+  "sidebar-divider-color": lighten($ico-white, 60%),
+  "sidebar-divider-background": darken($sidebar-white-background, 2.5%),
+
+  "sidebar-active-color": #fff,
+  "sidebar-active-background": #5cb85c,
+
+  "sidebar-hover-color": $sidebar-white-hover-color,
+  "sidebar-hover-background": $sidebar-white-hover-background,
+
+  "sidebar-submenu-color": lighten($ico-white, 37.5%),
+  "sidebar-submenu-background": darken($sidebar-white-background, 5%),
+
+  "sidebar-submenu-hover-color": $sidebar-white-submenu-hover-color,
+  "sidebar-submenu-hover-background": darken($sidebar-white-submenu-background, 3.5%),
+
+  "sidebar-submenu-active-color": darken($ico-white, 20%),
+  "sidebar-submenu-active-background": transparent,
+ 
+  "sidebar-filter-color": lighten($sidebar-white-hover-color, 10%),
+  "sidebar-filter-background": lighten($sidebar-white-hover-background, 10%),
+
+  "sidebar-filter-submenu-color": lighten($sidebar-white-submenu-hover-color, 10%),
+  "sidebar-filter-submenu-background": lighten($sidebar-white-submenu-hover-background, 10%),
+
+// Topnav
+
+  "horizontal-background": #fff,
+  "horizontal-color": lighten($ico-white, 60%),
+  "horizontal-placehoder": lighten($ico-white, 80%),
+  
+  "horizontal-toolbar-icon": lighten($ico-white, 60%),
+  "horizontal-toolbar-icon-hover": lighten($ico-white, 20%),
+  
+  "horizontal-toolbar-divider": #eeeeee,
+);
+

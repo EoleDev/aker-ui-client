@@ -1,0 +1,49 @@
+<app-panel heading="Hosts">
+  <div id="table" class="table-editable">
+    <form [formGroup]="hostForm">
+      <table class="table table-bordered table-responsive-md table-striped text-center" formArrayName="hosts">
+        <thead>
+          <th class="text-center">Name</th>
+          <th class="text-center">Hostname</th>
+          <th class="text-center">Port</th>
+          <th class="text-center">Key</th>
+          <th class="text-center">Action</th>
+        </thead>
+        <tbody *ngFor="let control of hosts.controls; let i=index">
+          <tr [formGroup]="control">
+            <td class="form-group">
+              <input type="text" [readonly]="readOnly(i)" class="form-control" formControlName="name" placeholder="name">
+            </td>
+            <td>
+              <input type="text" [readonly]="readOnly(i)" class="form-control" formControlName="hostname" placeholder="hostname">
+            </td>
+            <td>
+              <input type="text" [readonly]="readOnly(i)" class="form-control" formControlName="port" placeholder="port">
+            </td>
+            <td>
+              <input type="text" [readonly]="readOnly(i)" class="form-control" formControlName="key" placeholder="Key">
+            </td>
+            <td>
+              <span class="table-action">
+                <button type="button" class="btn btn-outline-primary btn-sm" (click)="edit(i)" *ngIf="readOnly(i)">
+                  <fa-icon [icon]='["fas", "edit"]'></fa-icon>
+                </button>
+                <button type="button" class="btn btn-outline-success btn-sm" (click)="edit(i)" *ngIf="!readOnly(i)">
+                  <fa-icon [icon]='["fas", "check"]'></fa-icon>
+                </button>
+                <button type="button" class="btn btn-outline-danger btn-sm" (click)="remove(i)" *ngIf="!readOnly(i)">
+                  <fa-icon [icon]='["fas", "trash"]'></fa-icon>
+                </button>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+    <span class="table-add float-right mb-3 mr-2">
+      <button class="btn btn-outline-success" (click)="addUser()">
+        <fa-icon [icon]='["fas", "plus"]'></fa-icon>
+      </button>
+    </span>
+  </div>
+</app-panel>

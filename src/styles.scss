@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+$enable-gradients: true;
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "assets/scss/colors.scss";
+
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #ebeef0;
+  line-height: 1.15;
+  height: 100%;
+}
+
+.form-horizontal .control-label {
+  text-align: right;
+}
+

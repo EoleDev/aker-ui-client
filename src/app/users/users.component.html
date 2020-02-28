@@ -1,0 +1,41 @@
+<app-panel heading="Users">
+  <div id="table" class="table-editable">
+    <form [formGroup]="userForm">
+      <table class="table table-bordered table-responsive-md table-striped text-center" formArrayName="users">
+        <thead>
+          <th class="text-center">Username</th>
+          <th class="text-center">Key File</th>
+          <th class="text-center">Action</th>
+        </thead>
+        <tbody *ngFor="let control of users.controls; let i=index">
+          <tr [formGroup]="control">
+            <td class="form-group">
+              <input type="text" [readonly]="readOnly(i)" class="form-control" formControlName="username" placeholder="User name">
+            </td>
+            <td>
+              <input type="text" [readonly]="readOnly(i)" class="form-control" formControlName="keyfile" placeholder="Key File">
+            </td>
+            <td>
+              <span class="table-action">
+                <button type="button" class="btn btn-outline-primary btn-sm" (click)="edit(i)" *ngIf="readOnly(i)">
+                  <fa-icon [icon]='["fas", "edit"]'></fa-icon>
+                </button>
+                <button type="button" class="btn btn-outline-success btn-sm" (click)="edit(i)" *ngIf="!readOnly(i)">
+                  <fa-icon [icon]='["fas", "check"]'></fa-icon>
+                </button>
+                <button type="button" class="btn btn-outline-danger btn-sm" (click)="remove(i)" *ngIf="!readOnly(i)">
+                  <fa-icon [icon]='["fas", "trash"]'></fa-icon>
+                </button>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+    <span class="table-add float-right mb-3 mr-2">
+      <button class="btn btn-outline-success" (click)="addUser()">
+        <fa-icon [icon]='["fas", "plus"]'></fa-icon>
+      </button>
+    </span>
+  </div>
+</app-panel>

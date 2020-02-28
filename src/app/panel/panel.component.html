@@ -1,0 +1,19 @@
+<div class="panel card mb-2">
+  <div class="card-body p-0">
+    <div class="panel-heading d-flex justify-content-between">
+      <h6 class="font-italic font-weight-bolder text-black-50 text-uppercase align-self-center m-0">
+        <i *ngIf="icon" class="{{icon}}"></i>{{(icon? " ":"")}}{{heading}}
+      </h6>
+      <div class="panel-ctrls align-self-center">
+        <button class="btn btn-sm" (click)="collapsed = !collapsed">
+          <fa-icon *ngIf="!collapsed" [icon]="['fas', 'minus']"></fa-icon>
+          <fa-icon *ngIf="collapsed" [icon]="['fas', 'plus']"></fa-icon>
+        </button>
+      </div>
+    </div>
+    <div class="panel-body" [ngbCollapse]="collapsed">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>
+

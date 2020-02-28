@@ -1,0 +1,12 @@
+@import "colors/color-white.scss";
+@import "colors/color-black.scss";
+
+$colors: (
+  "white": $map-white,
+  "black": $map-black
+);
+
+@function col($col, $data) {
+  @return map-get(map-get($colors, '#{$col}'), '#{$data}');
+}
+
