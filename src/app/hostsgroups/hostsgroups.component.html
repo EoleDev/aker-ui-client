@@ -1,0 +1,40 @@
+<app-panel heading="hostsgroups">
+  <div id="table" class="table-editable">
+    <form [formGroup]="hostsgroupForm">
+      <table class="table table-bordered table-responsive-md table-striped text-center" formArrayName="groups">
+        <thead>
+          <th class="text-center">Name</th>
+          <th class="text-center">Hostgroups</th>
+          <th class="text-center">Usergroups</th>
+          <th class="text-center">Action</th>
+        </thead>
+        <tbody *ngFor="let control of groups.controls; let i=index">
+          <tr [formGroup]="control">
+            <td class="form-group">
+              <input type="text" [readonly]="true" class="form-control" formControlName="name" placeholder="User name">
+            </td>
+            <td>
+              <ng-select formControlName="usergroups" [items]="usergroups" bindLabel="name" bindValue="id" [multiple]="true" clearAllText="Clear" placeholder="Select Groups" [hideSelected]="true" [readonly]="readOnly(i)"></ng-select>
+            </td>
+            <td>
+              <ng-select formControlName="hostgroups" [items]="hostgroups" bindLabel="name" bindValue="id" [multiple]="true" clearAllText="Clear" placeholder="Select Groups" [hideSelected]="true" [readonly]="readOnly(i)"></ng-select>
+            </td>
+            <td>
+              <span class="table-action">
+                <button type="button" class="btn btn-outline-primary btn-sm" (click)="edit(i)" *ngIf="readOnly(i)">
+                  <fa-icon [icon]='["fas", "edit"]'></fa-icon>
+                </button>
+                <button type="button" class="btn btn-outline-success btn-sm" (click)="validate(i)" *ngIf="!readOnly(i)">
+                  <fa-icon [icon]='["fas", "check"]'></fa-icon>
+                </button>
+                <button type="button" class="btn btn-outline-success btn-sm" (click)="cancel(i)" *ngIf="!readOnly(i)">
+                  <fa-icon [icon]='["fas", "undo"]'></fa-icon>
+                </button>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+</app-panel>

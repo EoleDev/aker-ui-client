@@ -1,0 +1,80 @@
+<app-panel heading="HostGroups">
+  <div id="table" class="table-editable">
+    <form [formGroup]="groupForm">
+      <table class="table table-bordered table-responsive-md table-striped text-center" formArrayName="hostgroups">
+        <thead>
+          <th class="text-center">Name</th>
+          <th class="text-center">Action</th>
+        </thead>
+        <tbody *ngFor="let control of hostgroups.controls; let i=index">
+          <tr [formGroup]="control">
+            <td class="form-group">
+              <input type="text" [readonly]="readOnlyHostGroup(i)" class="form-control" formControlName="name" placeholder="name">
+            </td>
+            <td>
+              <span class="table-action">
+                <button type="button" class="btn btn-outline-primary btn-sm" (click)="editHostGroup(i)" *ngIf="readOnlyHostGroup(i)">
+                  <fa-icon [icon]='["fas", "edit"]'></fa-icon>
+                </button>
+                <button type="button" class="btn btn-outline-success btn-sm" (click)="validateHostGroup(i)" *ngIf="!readOnlyHostGroup(i)">
+                  <fa-icon [icon]='["fas", "check"]'></fa-icon>
+                </button>
+                <button type="button" class="btn btn-outline-success btn-sm" (click)="cancelHostGroup(i)" *ngIf="!readOnlyHostGroup(i) && !isNewHostGroup(i)">
+                  <fa-icon [icon]='["fas", "undo"]'></fa-icon>
+                </button>
+                <button type="button" class="btn btn-outline-danger btn-sm" (click)="removeHostGroup(i)" *ngIf="!readOnlyHostGroup(i)">
+                  <fa-icon [icon]='["fas", "trash"]'></fa-icon>
+                </button>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+    <span class="table-add float-right mb-3 mr-2">
+      <button class="btn btn-outline-success" (click)="addHostGroup()">
+        <fa-icon [icon]='["fas", "plus"]'></fa-icon>
+      </button>
+    </span>
+  </div>
+</app-panel>
+<app-panel heading="UserGroups">
+  <div id="table" class="table-editable">
+    <form [formGroup]="groupForm">
+      <table class="table table-bordered table-responsive-md table-striped text-center" formArrayName="usergroups">
+        <thead>
+          <th class="text-center">Name</th>
+          <th class="text-center">Action</th>
+        </thead>
+        <tbody *ngFor="let control of usergroups.controls; let i=index">
+          <tr [formGroup]="control">
+            <td class="form-group">
+              <input type="text" [readonly]="readOnlyUserGroup(i)" class="form-control" formControlName="name" placeholder="name">
+            </td>
+            <td>
+              <span class="table-action">
+                <button type="button" class="btn btn-outline-primary btn-sm" (click)="editUserGroup(i)" *ngIf="readOnlyUserGroup(i)">
+                  <fa-icon [icon]='["fas", "edit"]'></fa-icon>
+                </button>
+                <button type="button" class="btn btn-outline-success btn-sm" (click)="validateUserGroup(i)" *ngIf="!readOnlyUserGroup(i)">
+                  <fa-icon [icon]='["fas", "check"]'></fa-icon>
+                </button>
+                <button type="button" class="btn btn-outline-success btn-sm" (click)="cancelUserGroup(i)" *ngIf="!readOnlyUserGroup(i) && !isNewUserGroup(i)">
+                  <fa-icon [icon]='["fas", "undo"]'></fa-icon>
+                </button>
+                <button type="button" class="btn btn-outline-danger btn-sm" (click)="removeUserGroup(i)" *ngIf="!readOnlyUserGroup(i)">
+                  <fa-icon [icon]='["fas", "trash"]'></fa-icon>
+                </button>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+    <span class="table-add float-right mb-3 mr-2">
+      <button class="btn btn-outline-success" (click)="addUserGroup()">
+        <fa-icon [icon]='["fas", "plus"]'></fa-icon>
+      </button>
+    </span>
+  </div>
+</app-panel>

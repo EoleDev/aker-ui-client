@@ -3,6 +3,7 @@ $enable-gradients: true;
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 @import "assets/scss/colors.scss";
+@import "~@ng-select/ng-select/themes/default.theme.css";
 
 
 html {
